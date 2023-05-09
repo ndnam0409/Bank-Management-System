@@ -4,9 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 import com.toedter.calendar.JDateChooser;
+import java.awt.event.*;    
 
-public class SignupOne extends JFrame {
-    
+public class SignupOne extends JFrame implements ActionListener {
+    long random;
     JLabel name, fname, dob, gender, email, marital, address, city, state, pincode;
     JTextField nameTextField, fnameTextField, emailTextField, addressTextField, cityTextField, stateTextField, pincodeTextField;
     JDateChooser dateChooser;
@@ -17,7 +18,7 @@ public class SignupOne extends JFrame {
         setLayout(null);
         
         Random ran = new Random();
-        long random = Math.abs((ran.nextLong() % 9000L) + 1000L);
+        random = Math.abs((ran.nextLong() % 9000L) + 1000L);
         
         JLabel formo = new JLabel("APPLICATION FORM NO." + random);
         formo.setFont(new Font("Raleway", Font.BOLD, 38));
@@ -69,7 +70,7 @@ public class SignupOne extends JFrame {
         male.setBackground(Color.LIGHT_GRAY);
         add(male);
         
-        female = new JRadioButton("Male");
+        female = new JRadioButton("Female");
         female.setBounds(450,290,100,30);
         female.setBackground(Color.LIGHT_GRAY);
         add(female);
@@ -113,7 +114,7 @@ public class SignupOne extends JFrame {
         maritalgroup.add(unmarried);
         maritalgroup.add(other);
         
-        address = new JLabel("Email Address: ");
+        address = new JLabel("Address: ");
         address.setFont(new Font("Raleway", Font.BOLD, 20));
         address.setBounds(100,440,200,30);
         add(address);
@@ -158,6 +159,7 @@ public class SignupOne extends JFrame {
         next.setForeground(Color.WHITE);
         next.setFont(new Font("Raleway", Font.BOLD, 14));
         next.setBounds(620,660,80,30);
+        next.addActionListener(this);
         add(next);
         
         getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -166,6 +168,45 @@ public class SignupOne extends JFrame {
         setLocation(350,10);
         setVisible(true);
     }
+    
+    public void actionPerformed(ActionEvent ae){
+        String formo = " " + random; // long
+        String name = nameTextField.getText();
+        String fname = fnameTextField.getText();
+        String dob = ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText();
+        String gender = null;
+        if (male.isSelected()){
+            gender = "Male";
+        }else if (female.isSelected()){
+            gender = "Female";
+        }
+        String email = emailTextField.getText();
+        String marital = null;
+        if (married.isSelected()){
+            marital = "Married";
+        }else if (unmarried.isSelected()){
+            marital = "Unmarried";
+        }else if (other.isSelected()){
+            marital = "Other";
+        }
+        String address = addressTextField.getText();
+        String city = cityTextField.getText();
+        String state = stateTextField.getText();
+        String pincode = pincodeTextField.getText();
+        
+        try{
+            if (name.equals("")){
+                JOptionPane.showMessageDialog(null, "Name is required");
+            } else{
+                Conn c = new Conn();
+                String query = "insert into signup values('"+formo+"', '"+name+"', '"+fname+"', '"+dob+"', '"+gender+"', '"+email+"', '"+marital+"', '"+address+"', '"+city+"', '"+pincode+"', '"+state+"')";
+                c.s.executeUpdate(query);
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
     public static void main(String args[]) {
         new SignupOne();
     }
