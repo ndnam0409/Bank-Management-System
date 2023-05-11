@@ -2,15 +2,20 @@ package bank.management.system;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.*;
+import java.awt.event.*;
 
-public class SignupTwo extends JFrame {
-    
+public class SignupTwo extends JFrame implements ActionListener {
+    long random;
     JLabel religion, category, income, educational, qualification, occupation, citizen, PAN, Aadhar, exAccount;
     JComboBox religionComboBox, categoryComboBox, incomeComboBox, eduComboBox, occupationCombobox;
     JTextField panTextField, AadharTextField;
     JRadioButton syes, sno, eyes, eno;
     JButton next;
-    SignupTwo(){
+    String formno;
+    SignupTwo(String formno){
+        
+        this.formno = formno;
+        
         setLayout(null);
         
         setTitle("NEW ACCOUNT APPLICATION FORM - PAGE 2");
@@ -152,6 +157,7 @@ public class SignupTwo extends JFrame {
         next.setForeground(Color.WHITE);
         next.setFont(new Font("Raleway", Font.BOLD, 14));
         next.setBounds(620,660,80,30);
+        next.addActionListener(this);
         add(next);
         
         getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -161,7 +167,37 @@ public class SignupTwo extends JFrame {
         setVisible(true);
     }
     
+    public void actionPerformed(ActionEvent ae){
+        String formno = " " + random;
+        String sreligion = (String)religionComboBox.getSelectedItem();
+        String scategory = (String)categoryComboBox.getSelectedItem();
+        String sincome = (String)incomeComboBox.getSelectedItem();
+        String seducational = (String) eduComboBox.getSelectedItem();
+        String soccupation = (String) occupationCombobox.getSelectedItem();
+        String span = panTextField.getText();
+        String saadhar = AadharTextField.getText();
+        String scitizen = null;
+        if (syes.isSelected()){
+            scitizen = "Yes";
+        }else if (sno.isSelected()){
+            scitizen = "No";
+        }
+        String sExistAccount = null;
+        if (eyes.isSelected()){
+            sExistAccount = "Yes";
+        }else if (eno.isSelected()){
+            sExistAccount = "No";
+        }
+        
+        try{
+            Conn c = new Conn();
+            String query = "insert into signuptwo values('"+formno+"', '"+sreligion+"', '"+scategory+"', '"+sincome+"', '"+seducational+"', '"+soccupation+"', '"+span+"', '"+saadhar+"', '"+scitizen+"', '"+sExistAccount+"')";
+            c.s.executeUpdate(query);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
     public static void main(String args[]) {
-       new SignupTwo();
+       new SignupTwo("");
     }
 }
