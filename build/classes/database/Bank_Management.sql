@@ -48,8 +48,10 @@ create table login(
     pin varchar(10)
 );
 
+select * from login;
 
 
+insert into login values ('123', '345', '000');
 
 
 
