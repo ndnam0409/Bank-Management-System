@@ -15,7 +15,6 @@ create table signup(
     state varchar(25), 
     primary key(formno)
 );
-select * from signup;
 
 create table signuptwo(
     formno varchar(20),
@@ -30,8 +29,6 @@ create table signuptwo(
     existaccount varchar(20),
     primary key(formno)
 );
-
-select * from signuptwo;
 
 create table signupthree (
     formno varchar(20),
@@ -48,10 +45,12 @@ create table login(
     pin varchar(10)
 );
 
-select * from login;
-
-
-insert into login values ('123', '345', '000');
+create table bank(
+	pin varchar(10), 
+	date varchar(50), 
+	type varchar(20), 
+	amount varchar(20)
+);
 
 
 
