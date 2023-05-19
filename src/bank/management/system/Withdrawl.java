@@ -14,7 +14,7 @@ public class Withdrawl extends JFrame implements ActionListener {
     
     Withdrawl(String pinnumber){
         this.pinnumber = pinnumber;
-         setLayout(null);
+        setLayout(null);
         
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/atm.jpg"));
         Image i2 = i1.getImage().getScaledInstance(900,900,Image.SCALE_DEFAULT);
@@ -61,7 +61,7 @@ public class Withdrawl extends JFrame implements ActionListener {
                     Conn c = new Conn();
                     String query = "insert into bank values ('"+pinnumber+"', '"+date+"', 'Withdrawl', '"+number+"')";
                     c.s.executeUpdate(query);
-                    JOptionPane.showMessageDialog(null, "Rs " + number + " Withdraw Successfully");
+                    JOptionPane.showMessageDialog(null, "$ " + number + " Withdraw Successfully");
                     setVisible(false);
                     new Transactions(pinnumber).setVisible(true);
                 } catch(Exception e){

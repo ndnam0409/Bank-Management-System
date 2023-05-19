@@ -60,12 +60,9 @@ public class Transactions extends JFrame implements ActionListener {
         exit.setBounds(355,520,150,30);
         image.add(exit);
         
-        
         setSize(900,900);
         setLocation(300,0);
-        //setUndecorated(true);
         setVisible(true);
-        
     }
     
     @Override
@@ -78,6 +75,12 @@ public class Transactions extends JFrame implements ActionListener {
         } else if (ae.getSource() == withdrawl){
             setVisible(false);
             new Withdrawl(pinnumber).setVisible(true);
+        } else if (ae.getSource() == fastcash){
+            setVisible(false);
+            new FashCash(pinnumber).setVisible(true);
+        } else if (ae.getSource() == pinchange){
+            setVisible(false);
+            new PinChange(pinnumber).setVisible(true);
         }
     }
     

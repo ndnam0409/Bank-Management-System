@@ -50,7 +50,8 @@ create table bank(
 	date varchar(50), 
 	type varchar(20), 
 	amount varchar(20)
-);
+);	
+
 
 
 
