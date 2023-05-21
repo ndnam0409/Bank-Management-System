@@ -5,6 +5,10 @@
         <group>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Bank%20Management%20System/src/bank/management/system/Transactions.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Bank%20Management%20System/src/bank/management/system/Login.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Bank%20Management%20System/src/bank/management/system/BalanceEnquiry.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Bank%20Management%20System/src/bank/management/system/Ministatement.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Bank%20Management%20System/src/bank/management/system/PinChange.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Bank%20Management%20System/src/bank/management/system/FashCash.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Bank%20Management%20System/src/bank/management/system/Deposit.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Bank%20Management%20System/src/bank/management/system/Withdrawl.java</file>
         </group>

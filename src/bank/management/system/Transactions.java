@@ -58,6 +58,7 @@ public class Transactions extends JFrame implements ActionListener {
         
         exit = new JButton("Exit");
         exit.setBounds(355,520,150,30);
+        exit.addActionListener(this);
         image.add(exit);
         
         setSize(900,900);
@@ -81,6 +82,12 @@ public class Transactions extends JFrame implements ActionListener {
         } else if (ae.getSource() == pinchange){
             setVisible(false);
             new PinChange(pinnumber).setVisible(true);
+        } else if (ae.getSource() == balanceenquiry){
+           setVisible(false);
+           new BalanceEnquiry(pinnumber).setVisible(true);
+        } else if (ae.getSource() == ministatement){
+            setVisible(false);
+            new Ministatement(pinnumber).setVisible(true);
         }
     }
     

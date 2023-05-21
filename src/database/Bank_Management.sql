@@ -52,6 +52,8 @@ create table bank(
 	amount varchar(20)
 );	
 
+select * from bank;
+select * from login;
 
 
 

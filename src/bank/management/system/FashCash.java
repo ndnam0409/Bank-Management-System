@@ -90,7 +90,6 @@ public class FashCash extends JFrame implements ActionListener {
                 if (ae.getSource() != back && balance < Integer.parseInt(amount)){
                     JOptionPane.showMessageDialog(null, "Insufficient Balance");
                 }
-                
                 Date date = new Date();
                 String query = "insert into bank values('"+pinnumber+"','"+date+"', 'Withdrawl', '"+amount+"')";
                 c.s.executeUpdate(query);
@@ -102,7 +101,6 @@ public class FashCash extends JFrame implements ActionListener {
             }catch(Exception e){
                 System.out.println(e);
             }
-            
         }
     } 
     
